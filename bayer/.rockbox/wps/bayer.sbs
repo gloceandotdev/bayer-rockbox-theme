@@ -1,0 +1,74 @@
+# Bayer - base skin
+#
+# Fonts
+%Fl(2,bayer-16.fnt)
+%Fl(3,bayer-32.fnt)
+%Fl(4,bayer-64.fnt)
+%Fl(5,bayer-96.fnt)
+#
+%xl(trail,menu_select_trail.bmp,0,0)
+%xl(rail,menu_rail.bmp,0,0,79)
+%xl(floor,lock_floor.bmp,0,150)
+#
+%Lb(item,284,26)
+#
+# lock screen logic
+%?mh<%VI(h)|%VI(m)>
+%?mh<%Vd(lk)%Vd(lkc)%Vd(lkd)%Vd(lks)%Vd(lkst)|%Vd(ttl)%Vd(st)%Vd(rail)%?if(%mp,>,1)<%Vd(ftl)%Vd(ftr)>>
+#
+# ---------------- Topbar ----------------
+# screen title
+%Vl(ttl,12,2,196,38,3)
+%s%?cs<menu|now playing|recording|fm radio|playlist|settings|files|database|plugins|quick settings|pitch|%Lt|playlists|plugin|menu|system|time & date|bookmarks|shortcuts|track info|usb|%Lt>
+#
+# clock - battery
+%Vl(st,208,6,100,21,2)
+%ar%?cf<%cH|%cl>:%cM - %bl%%
+#
+# ---------------- Sidebar ----------------
+# volume rail
+%Vl(rail,296,46,12,156,-)
+%xd(rail,%pv)
+#
+# ---------------- Footer ----------------
+%Vl(ftl,12,208,228,21,2)
+%s%?it<%it|%fn>%?ia< - %ia>
+%Vl(ftr,244,208,64,21,2)
+%ar%pc
+#
+# ---------------- Lists ----------------
+%Vi(m,0,46,284,156,1)
+#
+%Vi(h,0,46,1,1,1)
+#
+# selection trail
+%Vl(item,150,0,100,26,-)
+%?Lc<%xd(trail)>
+#
+%Vl(item,12,2,272,21,1)
+%?if(%Lc,=,0)<%LT>
+#
+# selection bar
+%Vl(item,0,0,150,26,1)
+%?Lc<%Vs(invert)%ss(0,0,%LT)>
+%?Lc<%Vs(invert)%ss(0,0,%LT)>
+#
+%Vl(item,12,2,138,21,1)
+%?Lc<%Vs(invert)%s%LT>
+#
+# ---------------- Lock screen ----------------
+%Vl(lk,0,0,320,240,-)
+%xd(floor)
+#
+%Vl(lkc,0,18,320,78,5)
+%ac%?cf<%cH|%cl>:%cM
+#
+# date
+%Vl(lkd,0,122,320,21,2)
+%ac%?cw<sunday|monday|tuesday|wednesday|thursday|friday|saturday> %?if(%ss(0,1,%cd),=,0)<%ss(1,1,%cd)|%cd> %?cm<january|february|march|april|may|june|july|august|september|october|november|december>
+#
+# locked - battery
+%Vl(lks,100,205,120,21,2)
+%ss(0,0,%pc)
+%Vl(lkst,108,205,104,21,2)
+%aclocked - %bl%%%ss(0,0,%pc)
